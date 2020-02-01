@@ -1,0 +1,27 @@
+
+1. Run ngrok for tunnelling
+
+ngrok http -host-header=localhost 7071
+
+
+2. Update event subscription at the storage account to the url from ngrok
+
+https://669c8091.ngrok.io/api/Orchestrator
+
+3. add local.settings.json
+
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "<<full storage account for Azure functions connection string>>",
+    "AzureWebJobsDashboard": "<<full storage account for Azure functions connection string>>",
+
+    "OrderBlobStorage": "<<blob storage account connection string>>",
+
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet"
+  }
+}
+
+4. Storage account for Azure Functions
+
+5. Blob storage for the files with Orders Container and Shipping Containers
