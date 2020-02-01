@@ -26,7 +26,7 @@ namespace filevalidation
             if (eventGridSoleItem.eventType == @"Microsoft.EventGrid.SubscriptionValidationEvent")
             {
                 log.LogTrace(@"Event Grid Validation event received.");
-                return req.CreateResponse(HttpStatusCode.OK, $"{{ \"validationResponse\" : \"{((dynamic)inputToFunction)[0].data.validationCode}\" }}");
+                return req.CreateCompatibleResponse(HttpStatusCode.OK, $"{{ \"validationResponse\" : \"{((dynamic)inputToFunction)[0].data.validationCode}\" }}");
             }
 
             CustomerBlobAttributes newCustomerFile = Helpers.ParseEventGridPayload(eventGridSoleItem, log);

@@ -6,7 +6,7 @@ ngrok http -host-header=localhost 7071
 
 2. Update event subscription at the storage account to the url from ngrok
 
-https://669c8091.ngrok.io/api/Orchestrator
+https://6a21903d.ngrok.io/api/Orchestrator
 
 3. add local.settings.json
 

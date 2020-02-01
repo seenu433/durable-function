@@ -1,18 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Threading.Tasks;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
-using Microsoft.WindowsAzure.Storage.Table;
+using System;
+using System.Net;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace filevalidation
 {
@@ -58,5 +50,12 @@ namespace filevalidation
 
             return true;
         }
+    }
+
+    static class HttpExtensions
+    {
+        public static HttpResponseMessage CreateCompatibleResponse(this HttpRequestMessage _, HttpStatusCode code) => new HttpResponseMessage(code);
+
+        public static HttpResponseMessage CreateCompatibleResponse(this HttpRequestMessage _, HttpStatusCode code, string stringContent) => new HttpResponseMessage(code) { Content = new StringContent(stringContent) };
     }
 }
